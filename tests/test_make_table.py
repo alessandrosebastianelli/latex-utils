@@ -16,5 +16,8 @@ if __name__ == '__main__':
         ]
     )
 
-    latex_table = make_table(columns_name, data)
+    latex_table = make_table(columns_name, data, caption='My table', label='tab1', preable=False)
     print(latex_table)
+
+    latex_table_2 = make_table(columns_name, data, caption='My table', label='tab1', preable=True)
+    print(latex_table_2)
