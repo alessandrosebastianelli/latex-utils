@@ -1,0 +1,4 @@
+.eggs
+.pytest_cache
+__pycache__
+latex_utils.egg-info
