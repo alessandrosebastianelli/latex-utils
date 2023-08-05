@@ -2,7 +2,7 @@ import numpy as np
 
 def make_table(columns_name, data, caption="table_caption", label="table_label", preable=False):
     '''
-        Create a string with plain latex file with a table using columns name and 2D array data.
+        Create a string with plain LaTeX file with a table using columns name and 2D array data.
 
         Keyword arguments:
         columns_name -- list of strings containing table columns name
