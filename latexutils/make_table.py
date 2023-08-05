@@ -1,5 +1,3 @@
-import numpy as np
-
 def make_table(columns_name, data, caption="table_caption", label="table_label", preable=False):
     '''
         Create a string with plain LaTeX file with a table using columns name and 2D array data.
@@ -12,7 +10,7 @@ def make_table(columns_name, data, caption="table_caption", label="table_label",
         preable -- bolean value, if True the function will return a full LaTeX document, if False the function will return only the table (default: False)
     '''
 
-    assert data.shape[1] == len(columns_name), "Error Message: mismatch between number of columns and shape of data"
+    if columns_name is not None: assert data.shape[1] == len(columns_name), "Error Message: mismatch between number of columns and shape of data"
 
     p = ""
     # LaTeX preamble
@@ -25,22 +23,23 @@ def make_table(columns_name, data, caption="table_caption", label="table_label",
     p += "\\begin{table}[!ht]\n"
     p += "\t\\centering\n"
     p += "\t\\caption{"+str(caption)+"}\\label{tab:"+label+"}\n"
-    p += "\t\\begin{tabular}{" + "".join([char*len(columns_name) for char in "c"]) + '}\n'
+    p += "\t\\begin{tabular}{" + "".join([char*data.shape[1] for char in "c"]) + '}\n'
     p += "\t\t\\toprule\n"
 
-    # Columns name
-    l = "\t\t"
-    for i in range(len(columns_name)):
-        l+= "{:<5s}{:<5s}{:<5s}{}".format("", str(columns_name[i]), "", "&")
-    l = l[:-1]
-    p += l + "\\\\\n"
-    p += "\t\t\\midrule\n"
+    if columns_name is not None:
+        # Columns name
+        l = "\t\t"
+        for i in range(len(columns_name)):
+            l+= "{:<5s}{}{:<5s}{}".format("", str(columns_name[i]), "", "&")
+        l = l[:-1]
+        p += l + "\\\\\n"
+        p += "\t\t\\midrule\n"
 
     # Data
     for i in range(data.shape[0]):
         l = "\t\t"
         for j in range(data.shape[1]):
-            l+= "{:<5s}{:<5s}{:<5s}{}".format("", str(data[i,j]), "", "&")
+            l+= "{:<5s}{}{:<5s}{}".format("", str(data[i,j]), "", "&")
         l = l[:-1]
 
         p += l + "\\\\\n"
