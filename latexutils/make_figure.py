@@ -1,3 +1,5 @@
+from .make_table import make_table
+
 def make_image(image_full_path, caption="table_caption", label="table_label", preable=False):
     '''
         Create a string with plain LaTeX file with an image.
@@ -30,3 +32,23 @@ def make_image(image_full_path, caption="table_caption", label="table_label", pr
 
     return p
 
+def make_tabular_image(images_full_path, caption="table_caption", label="table_label", preable=False):
+    '''
+        Create a string with plain LaTeX file with a table of images.
+
+        Keyword arguments:
+        images_full_path -- 2D ndarry of strings, path of the image in the LaTeX project
+        caption -- string for the caption of LaTeX table (default: "table_caption")
+        label -- string for the label of LaTeX table (default: "table_label")
+        preable -- bolean value, if True the function will return a full LaTeX document, if False the function will return only the table (default: False)
+    '''
+
+    images_full_path = images_full_path.astype(object)
+
+    for i in range(images_full_path.shape[0]):
+        for j in range(images_full_path.shape[1]):
+            images_full_path[i,j] = "\\includegraphics[width=\\columnwidth]{"+str(images_full_path[i,j])+"}"
+
+    p = make_table(None, images_full_path, caption=caption, label=label, preable=preable)
+
+    return p
