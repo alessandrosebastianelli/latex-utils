@@ -1,6 +1,6 @@
 import numpy as np
 
-def make_table(columns_name, data, caption="table_caption", label="table_label", preable=False:
+def make_table(columns_name, data, caption="table_caption", label="table_label", preable=False):
     '''
         Create a string with plain latex file with a table using columns name and 2D array data.
 
@@ -9,6 +9,7 @@ def make_table(columns_name, data, caption="table_caption", label="table_label",
         data -- 2D ndarray containing data used to fill the table
         caption -- string for the caption of LaTeX table (default: "table_caption")
         label -- string for the label of LaTeX table (default: "table_label")
+        preable -- bolean value, if True the function will return a full LaTeX document, if False the function will return only the table (default: False)
     '''
 
     assert data.shape[1] == len(columns_name), "Error Message: mismatch between number of columns and shape of data"
