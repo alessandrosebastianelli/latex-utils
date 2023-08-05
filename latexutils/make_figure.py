@@ -19,7 +19,7 @@ def make_image(image_full_path, caption="table_caption", label="table_label", pr
     p += "\\begin{figure}[!ht]\n"
     p += "\t\\centering\n"
     
-    p += "\\includegraphics[width=\\columnwidth]{"+str(image_full_path)+"}"
+    p += "\t\\includegraphics[width=\\columnwidth]{"+str(image_full_path)+"}\n"
 
     p += "\t\\caption{"+str(caption)+"}\\label{tab:"+label+"}\n"
     p += "\\end{figure}\n"
