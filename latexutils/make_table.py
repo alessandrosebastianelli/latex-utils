@@ -1,6 +1,6 @@
 import numpy as np
 
-def make_table(columns_name, data, caption="table_caption", label="table_label"):
+def make_table(columns_name, data, caption="table_caption", label="table_label", preable=True):
     '''
         Create a string with plain latex file with a table using columns name and 2D array data.
 
@@ -13,10 +13,12 @@ def make_table(columns_name, data, caption="table_caption", label="table_label")
 
     assert data.shape[1] == len(columns_name), "Error Message: mismatch between number of columns and shape of data"
 
+    p = ""
     # LaTeX preamble
-    p  = "\\documentclass[11pt]{article}\n"
-    p += "\\usepackage{booktabs}\n\n"
-    p += "\\begin{document}\n\n"
+    if preable:
+        p += "\\documentclass[11pt]{article}\n"
+        p += "\\usepackage{booktabs}\n\n"
+        p += "\\begin{document}\n\n"
 
     # Table
     p += "\\begin{table}[!ht]\n"
@@ -43,9 +45,10 @@ def make_table(columns_name, data, caption="table_caption", label="table_label")
         p += l + "\\\\\n"
     p += "\t\t\\bottomrule\n"
     p += "\t\\end{tabular}\n"
-    p += "\\end{table}\n\n"
+    p += "\\end{table}\n"
 
-    # End document
-    p += "\\end{document}\n"
+    if preable:
+        # End document
+        p += "\n\\end{document}\n"
 
     return p
