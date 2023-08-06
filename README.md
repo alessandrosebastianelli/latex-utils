@@ -4,6 +4,6 @@
 
 ## Documentation
 
-The documentation has been produced using [pdoc](https://pdoc.dev/docs/pdoc.html#add-documentation)
+The documentation has been produced using [pdoc](https://pdoc.dev).
 
-pdoc latexutils -o ./docs
+```pdoc latexutils -o ./docs```
