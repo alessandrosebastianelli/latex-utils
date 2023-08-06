@@ -64,7 +64,8 @@ def make_tabular_image(images_full_path, caption : str = "table_caption", label 
             LaTeX code to display a table of images.
     '''
 
-    assert images_full_path == 2, "Error Message: data must be a 2D array"
+    if images_full_path.shape != 2:
+        raise Exception("Error Message: images_full_path must be a 2D array")
 
     images_full_path = images_full_path.astype(object)
 

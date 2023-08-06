@@ -21,8 +21,13 @@ def make_table(columns_name, data, caption : str = "table_caption", label : str 
             LaTeX code to display a table  
     '''
 
-    if columns_name is not None: assert data.shape[1] == len(columns_name), "Error Message: mismatch between number of columns and shape of data"
+    if data.shape != 2:
+        raise Exception("Error Message: shape of data must be equals to two.")
 
+    if columns_name is not None: 
+        if data.shape[1] != len(columns_name):
+            raise Exception("Error Message: mismatch between number of columns and shape of data")
+    
     p = ""
     # LaTeX preamble
     if preable:
