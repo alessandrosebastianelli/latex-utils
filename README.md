@@ -9,7 +9,7 @@ The documentation has been produced using [pdoc](https://pdoc.dev).
 ```pdoc latexutils -o ./docs```
 
 
-## Build and install libraries
+## Build and install the package
 
 Move to latex-utils folder
 
