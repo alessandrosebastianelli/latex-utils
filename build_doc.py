@@ -12,7 +12,7 @@ os.mkdir("./docs/")
 os.mkdir("./docs/pytexutils/")
 
 # Build documentation
-os.system("pdoc ./pytexutils -o ./docs --docformat numpy -t ./docs_assets/")
+os.system("pdoc ./pytexutils -o ./docs --docformat google --logo ./imgs/logo.png -t ./docs_assets/") #--logo https://casperfibaek.github.io/buteo/logo.png --favicon https://casperfibaek.github.io/buteo/favicon.ico
 
-#shutil.copy2("./docs_assets/logo.png", "./docs/logo.png")
+shutil.copy2("./docs_assets/logo.png", "./docs/logo.png")
 #shutil.copy2("./docs_assets/favicon.ico", "./docs/favicon.ico")
