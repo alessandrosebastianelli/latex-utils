@@ -6,7 +6,7 @@ The documentation has been produced using [pdoc](https://pdoc.dev).
 
 ```pdoc latexutils -o ./docs```
 
-and it is available [here](docs/index.html).
+and it is available [here](https://alessandrosebastianelli.github.io/latex-utils/pytexutils.html).
 
 ## Build and install the package
 
