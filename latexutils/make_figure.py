@@ -25,7 +25,9 @@ def make_image(image_full_path : str, caption : str = "image_caption", label : s
     # LaTeX preamble
     if preable:
         p += "\\documentclass[11pt]{article}\n"
+        p += "\\usepackage{graphicx}\n"
         p += "\\begin{document}\n\n"
+        
 
     # Table
     p += "\\begin{figure}[!ht]\n"
