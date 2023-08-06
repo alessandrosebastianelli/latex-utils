@@ -19,6 +19,53 @@ def make_table(columns_name, data, caption : str = "table_caption", label : str 
         --------  
         - p : str  
             LaTeX code to display a table  
+
+        Usage:
+        ------
+
+        ```python
+        import numpy as np  
+
+        columns_name = ['A', 'B', 'C']  
+        data         = np.array(  
+            [  
+                [0.1, 0.2, 0.3],  
+                [0.4, 0.5, 0.6],  
+                [0.7, 0.8, 0.9]  
+            ]  
+        )  
+
+        latex_table = make_table(columns_name, data, caption='My table 1', label='tab1', preable=True)
+        ```
+
+        Output:
+        -------
+
+        ```latex
+        \\documentclass[11pt]{article}
+        \\usepackage{booktabs}
+        \\usepackage{graphicx}
+
+        \\begin{document}
+
+        \\begin{table}[!ht]
+                \\centering
+                \\caption{My table 1}\\label{tab:tab1}
+                \\resizebox{\\columnwidth}{!}{
+                \\begin{tabular}{ccc}
+                        \\toprule
+                            A     &     B     &     C     \\\\
+                        \\midrule
+                            0.1     &     0.2     &     0.3     \\\\
+                            0.4     &     0.5     &     0.6     \\\\
+                            0.7     &     0.8     &     0.9     \\\\
+                            1.1     &     1.2     &     1.3     \\\\
+                        \\bottomrule
+                \\end{tabular}}
+        \\end{table}
+
+        \\end{document}
+        ```
     '''
 
     if len(data.shape) != 2:
