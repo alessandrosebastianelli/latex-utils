@@ -1,0 +1,2 @@
+import latexutils.figures.make_image
+import latexutils.figures.make_tabular_image

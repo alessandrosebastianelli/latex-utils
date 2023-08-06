@@ -3,3 +3,6 @@
     tables, images, figures for LaTeX documents.
     
 """
+
+import latexutils.figures.make_image
+import latexutils.tables.make_table
