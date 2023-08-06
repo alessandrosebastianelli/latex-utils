@@ -1,4 +1,6 @@
-def make_table(columns_name, data, caption : str = "table_caption", label : str = "table_label", preable : bool = False) -> str:
+import numpy as np
+
+def make_table(columns_name : list, data : np.ndarray, caption : str = "table_caption", label : str = "table_label", preable : bool = False) -> str:
     '''
         Produces LaTeX code to display a table.
 
