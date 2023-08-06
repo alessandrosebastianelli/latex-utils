@@ -1,7 +1,7 @@
 import sys
 sys.path += ['.']
 
-from pylatexutils.tables.make_table import make_table
+from pytexutils.tables.make_table import make_table
 import numpy as np
 import os
 

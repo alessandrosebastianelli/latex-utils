@@ -1,0 +1,31 @@
+package:
+  name: pytexutils
+  version: "0.0.4"
+
+source:
+  path: ./
+
+build:
+  number: 0
+  script: "$PYTHON -m pip install ."
+  noarch: python
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - numpy
+
+test:
+  imports:
+    - pytexutils
+
+about:
+  home: https://github.com/alessandrosebastianelli/latex-utils/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: "Python LaTeX Utils."

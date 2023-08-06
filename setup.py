@@ -5,17 +5,25 @@ from setuptools.command.sdist import sdist
 from setuptools import setup, find_packages
 from subprocess import check_call
 
+def readme():
+    """ Generate readme file. """
+    try:
+        with open("./README.md", encoding="utf8") as file:
+            return file.read()
+    except IOError:
+        return ""
+
 # Package 
 HERE = pathlib.Path(__file__).parent
 PACKAGE_NAME  = 'pytexutils'
-VERSION = '0.0.2'
+VERSION = '0.0.4'
 AUTHOR = 'Alessandro Sebastianelli'
 AUTHOR_EMAIL = 'alessandro.sebastianelli1995@gmail.com'
 URL = 'https://github.com/alessandrosebastianelli/latex-utils.git'
 
 LICENSE = 'MIT'
 DESCRIPTION = 'LaTeX Utils'
-LONG_DESCRIPTION = (HERE/"README.md").read_text()
+LONG_DESCRIPTION = readme()
 LONG_DESC_TYPE = 'text/markdown'
 
 
