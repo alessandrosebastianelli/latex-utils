@@ -1,6 +1,6 @@
 from .make_table import make_table
 
-def make_image(image_full_path : str, caption : str = "table_caption", label : str = "table_label", preable : bool = False) -> str:
+def make_image(image_full_path : str, caption : str = "image_caption", label : str = "image_label", preable : bool = False) -> str:
     '''
         Produces LaTeX code to display an image.  
 
@@ -33,7 +33,7 @@ def make_image(image_full_path : str, caption : str = "table_caption", label : s
     
     p += "\t\\includegraphics[width=\\columnwidth]{"+str(image_full_path)+"}\n"
 
-    p += "\t\\caption{"+str(caption)+"}\\label{tab:"+label+"}\n"
+    p += "\t\\caption{"+str(caption)+"}\\label{fig:"+label+"}\n"
     p += "\\end{figure}\n"
 
     if preable:
