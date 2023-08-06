@@ -1,13 +1,24 @@
-def make_table(columns_name, data, caption="table_caption", label="table_label", preable=False):
+def make_table(columns_name, data, caption : str = "table_caption", label : str = "table_label", preable : bool = False) -> str:
     '''
-        Create a string with plain LaTeX file with a table using columns name and 2D array data.
+        Produces LaTeX code to display a table.
 
-        Keyword arguments:
-        columns_name -- list of strings containing table columns name
-        data -- 2D ndarray containing data used to fill the table
-        caption -- string for the caption of LaTeX table (default: "table_caption")
-        label -- string for the label of LaTeX table (default: "table_label")
-        preable -- bolean value, if True the function will return a full LaTeX document, if False the function will return only the table (default: False)
+        Parameters:  
+        -----------
+        - columns_name  
+            list of strings containing table columns name
+        - data  
+            2D ndarray containing data used to fill the table
+        - caption : str  
+            string for the caption of LaTeX table (default: "table_caption")  
+        - label : str  
+            string for the label of LaTeX table (default: "table_label")  
+        - preable : bool  
+            If True the function will return a full LaTeX document, if False the function will return only the table (default: False)  
+
+        Returns:  
+        --------  
+        - p : str  
+            LaTeX code to display a table  
     '''
 
     if columns_name is not None: assert data.shape[1] == len(columns_name), "Error Message: mismatch between number of columns and shape of data"
