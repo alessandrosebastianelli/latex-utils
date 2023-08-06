@@ -21,7 +21,7 @@ def make_table(columns_name, data, caption : str = "table_caption", label : str 
             LaTeX code to display a table  
     '''
 
-    if data.shape != 2:
+    if len(data.shape) != 2:
         raise Exception("Error Message: shape of data must be equals to two.")
 
     if columns_name is not None: 
