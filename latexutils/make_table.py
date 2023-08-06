@@ -32,13 +32,15 @@ def make_table(columns_name, data, caption : str = "table_caption", label : str 
     # LaTeX preamble
     if preable:
         p += "\\documentclass[11pt]{article}\n"
-        p += "\\usepackage{booktabs}\n\n"
+        p += "\\usepackage{booktabs}\n"
+        p += "\\usepackage{graphicx}\n\n"
         p += "\\begin{document}\n\n"
 
     # Table
     p += "\\begin{table}[!ht]\n"
     p += "\t\\centering\n"
     p += "\t\\caption{"+str(caption)+"}\\label{tab:"+label+"}\n"
+    p += "\t\\resizebox{\\columnwidth}{!}{\n"
     p += "\t\\begin{tabular}{" + "".join([char*data.shape[1] for char in "c"]) + '}\n'
     p += "\t\t\\toprule\n"
 
@@ -60,7 +62,7 @@ def make_table(columns_name, data, caption : str = "table_caption", label : str 
 
         p += l + "\\\\\n"
     p += "\t\t\\bottomrule\n"
-    p += "\t\\end{tabular}\n"
+    p += "\t\\end{tabular}}\n"
     p += "\\end{table}\n"
 
     if preable:
