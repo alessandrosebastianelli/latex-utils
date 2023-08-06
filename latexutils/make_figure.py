@@ -1,14 +1,24 @@
 from .make_table import make_table
 
-def make_image(image_full_path, caption="table_caption", label="table_label", preable=False):
+def make_image(image_full_path : str, caption : str = "table_caption", label : str = "table_label", preable : bool = False) -> str:
     '''
-        Create a string with plain LaTeX file with an image.
+        Produces LaTeX code to display an image.  
 
-        Keyword arguments:
-        image_full_path -- string, path of the image in the LaTeX project
-        caption -- string for the caption of LaTeX table (default: "table_caption")
-        label -- string for the label of LaTeX table (default: "table_label")
-        preable -- bolean value, if True the function will return a full LaTeX document, if False the function will return only the table (default: False)
+        Parameters:  
+        -----------  
+        - image_full_path : str  
+            path of the image in the LaTeX project  
+        - caption : str  
+            string for the caption of LaTeX table (default: "table_caption")  
+        - label : str  
+            string for the label of LaTeX table (default: "table_label")  
+        - preable : bool  
+            If True the function will return a full LaTeX document, if False the function will return only the table (default: False)  
+
+        Returns:  
+        --------  
+        - p : str  
+            LaTeX code to display an image  
     '''
 
     p = ""
@@ -32,16 +42,29 @@ def make_image(image_full_path, caption="table_caption", label="table_label", pr
 
     return p
 
-def make_tabular_image(images_full_path, caption="table_caption", label="table_label", preable=False):
-    '''
-        Create a string with plain LaTeX file with a table of images.
 
-        Keyword arguments:
-        images_full_path -- 2D ndarry of strings, path of the image in the LaTeX project
-        caption -- string for the caption of LaTeX table (default: "table_caption")
-        label -- string for the label of LaTeX table (default: "table_label")
-        preable -- bolean value, if True the function will return a full LaTeX document, if False the function will return only the table (default: False)
+def make_tabular_image(images_full_path, caption : str = "table_caption", label : str = "table_label", preable : bool = False) -> str:
     '''
+        Produces LaTeX code to display a table of images.
+
+        Parameters:  
+        ----------- 
+        - images_full_path
+            2D ndarry of strings, path of the image in the LaTeX project
+        - caption : str  
+            string for the caption of LaTeX table (default: "table_caption")  
+        - label : str  
+            string for the label of LaTeX table (default: "table_label")  
+        - preable : bool  
+            If True the function will return a full LaTeX document, if False the function will return only the table (default: False)
+
+        Returns:  
+        --------  
+        - p : str  
+            LaTeX code to display a table of images.
+    '''
+
+    assert images_full_path == 2, "Error Message: data must be a 2D array"
 
     images_full_path = images_full_path.astype(object)
 
