@@ -1,4 +1,5 @@
 from .make_table import make_table
+import numpy as np
 
 def make_image(image_full_path : str, caption : str = "image_caption", label : str = "image_label", preable : bool = False) -> str:
     '''
@@ -19,6 +20,31 @@ def make_image(image_full_path : str, caption : str = "image_caption", label : s
         --------  
         - p : str  
             LaTeX code to display an image  
+        
+        Usage:
+        ------
+
+        ```python
+    
+        latex_table = make_table('fig1.png', caption='My image 1', label='img1', preable=True)
+        ```
+
+        Output:
+        -------
+
+        ```latex
+        \\documentclass[11pt]{article}
+        \\usepackage{graphicx}
+        \\begin{document}
+
+        \\begin{figure}[!ht]
+                \\centering
+                \\includegraphics[width=\\columnwidth]{fig1.png}
+                \\caption{My image 1}\\label{fig:img1}
+        \\end{figure}
+
+        \\end{document}
+        ```
     '''
 
     p = ""
@@ -45,7 +71,7 @@ def make_image(image_full_path : str, caption : str = "image_caption", label : s
     return p
 
 
-def make_tabular_image(images_full_path, caption : str = "table_caption", label : str = "table_label", preable : bool = False) -> str:
+def make_tabular_image(images_full_path : np.ndarray, caption : str = "table_caption", label : str = "table_label", preable : bool = False) -> str:
     '''
         Produces LaTeX code to display a table of images.
 
@@ -64,6 +90,43 @@ def make_tabular_image(images_full_path, caption : str = "table_caption", label 
         --------  
         - p : str  
             LaTeX code to display a table of images.
+        
+        Usage:
+        ------
+
+        ```python
+
+        import numpy as np
+
+        images = np.array(  
+            [["fig1.png", "fig2.png"],["fig1.png", "fig2.png"]]  
+        )  
+    
+        latex_table = make_tabular_image(images, caption='My image 1', label='img1', preable=True)  
+        ```
+
+        Output:
+        -------
+
+        ```latex
+        \\documentclass[11pt]{article}
+        \\usepackage{booktabs}
+        \\usepackage{graphicx}
+
+        \\begin{document}
+
+        \\begin{table}[!ht]
+                \\centering
+                \\caption{My image 1}\\label{tab:img1}
+                \\resizebox{\\columnwidth}{!}{
+                \begin{tabular}{cc}
+                        \\toprule
+                            \\includegraphics[width=\\columnwidth]{fig1.png}     &     \\includegraphics[width=\\columnwidth]{fig2.png}     \\\\
+                            \\includegraphics[width=\\columnwidth]{fig1.png}     &     \\includegraphics[width=\\columnwidth]{fig2.png}     \\\\
+                        \\bottomrule
+                \\end{tabular}}
+        \\end{table}
+        ```
     '''
 
     if len(images_full_path.shape) != 2:
