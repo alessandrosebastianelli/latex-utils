@@ -3,7 +3,7 @@ This package contains basic functionalities to speed-up the process of creating 
 ## Documentation
 The documentation has been produced using [pdoc](https://pdoc.dev).
 
-```pdoc latexutils -o ./docs```
+```python build_doc.py```
 
 and it is available [here](https://alessandrosebastianelli.github.io/latex-utils/pytexutils.html).
 
