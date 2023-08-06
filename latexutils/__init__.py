@@ -4,5 +4,9 @@
     
 """
 
-import latexutils.figures.make_image
-import latexutils.tables.make_table
+
+__all__ = ["make_image", "make_tabular_image", "make_table"]
+
+
+from .figures import make_image, make_tabular_image
+from .tables import make_table

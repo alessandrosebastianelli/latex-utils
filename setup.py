@@ -1,14 +1,82 @@
-from setuptools import find_packages, setup
+import os, pathlib
+from setuptools.command.develop import develop
+from setuptools.command.install import install
+from setuptools.command.sdist import sdist
+from setuptools import setup, find_packages
+from subprocess import check_call
+
+# Package 
+HERE = pathlib.Path(__file__).parent
+PACKAGE_NAME  = 'latexutils'
+VERSION = '0.0.2'
+AUTHOR = 'Alessandro Sebastianelli'
+AUTHOR_EMAIL = 'alessandro.sebastianelli1995@gmail.com'
+URL = 'https://github.com/alessandrosebastianelli/latex-utils.git'
+
+LICENSE = 'MIT'
+DESCRIPTION = 'LaTeX Utils'
+LONG_DESCRIPTION = (HERE/"README.md").read_text()
+LONG_DESC_TYPE = 'text/markdown'
+
+
+INSTALL_REQUIRES = [
+	'numpy',
+]
+
+
+def gitcmd_update_submodules():
+	'''	Check if the package is being deployed as a git repository. If so, recursively
+		update all dependencies.
+
+		@returns True if the package is a git repository and the modules were updated.
+			False otherwise.
+	'''
+	if os.path.exists(os.path.join(HERE, '.git')):
+		check_call(['git', 'submodule', 'update', '--init', '--recursive'])
+		return True
+
+	return False
+
+
+class gitcmd_develop(develop):
+	'''	Specialized packaging class that runs git submodule update --init --recursive
+		as part of the update/install procedure.
+	'''
+	def run(self):
+		gitcmd_update_submodules()
+		develop.run(self)
+
+
+class gitcmd_install(install):
+	'''	Specialized packaging class that runs git submodule update --init --recursive
+		as part of the update/install procedure.
+	'''
+	def run(self):
+		gitcmd_update_submodules()
+		install.run(self)
+
+
+class gitcmd_sdist(sdist):
+	'''	Specialized packaging class that runs git submodule update --init --recursive
+		as part of the update/install procedure;.
+	'''
+	def run(self):
+		gitcmd_update_submodules()
+		sdist.run(self)
+
 
 setup(
-    name='latexutils',
-    packages=find_packages(include=['latexutils']),
-    version='0.0.1',
-    description='LaTeX utils',
-    author='Alessandro Sebastianelli',
-    license='MIT',
-    install_requires=['numpy'],
-    setup_requires=['numpy, pytest-runner'],
-    tests_require=['pytest==4.4.1'],
-    test_suite='tests'
-)
+    cmdclass={
+		'develop': gitcmd_develop, 
+		'install': gitcmd_install, 
+		'sdist': gitcmd_sdist,
+	}, 
+	name=PACKAGE_NAME,
+	version=VERSION,
+	description=DESCRIPTION, 
+	long_description_content_type=LONG_DESC_TYPE,
+	author=AUTHOR, license=LICENSE, 
+	author_email=AUTHOR_EMAIL, 
+	url=URL, 
+	install_requires=INSTALL_REQUIRES,
+	packages=find_packages())
