@@ -7,7 +7,7 @@ setup(
     description='LaTeX utils',
     author='Alessandro Sebastianelli',
     license='MIT',
-    install_requires=[''],
+    install_requires=['numpy'],
     setup_requires=['numpy, pytest-runner'],
     tests_require=['pytest==4.4.1'],
     test_suite='tests'
