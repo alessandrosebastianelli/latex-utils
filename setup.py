@@ -1,8 +1,8 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='latex-utils',
-    packages=find_packages(include=['latex-utils']),
+    name='latexutils',
+    packages=find_packages(include=['latexutils']),
     version='0.0.1',
     description='LaTeX utils',
     author='Alessandro Sebastianelli',
