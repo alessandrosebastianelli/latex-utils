@@ -1,8 +1,8 @@
 import sys
 sys.path += ['.']
 
-from latexutils.figures.make_image import make_image
-from latexutils.figures.make_tabular_image import make_tabular_image
+from pytexutils.figures.make_image import make_image
+from pytexutils.figures.make_tabular_image import make_tabular_image
 import numpy as np
 import os
 

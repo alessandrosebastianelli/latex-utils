@@ -7,7 +7,7 @@ from subprocess import check_call
 
 # Package 
 HERE = pathlib.Path(__file__).parent
-PACKAGE_NAME  = 'latexutils'
+PACKAGE_NAME  = 'pytexutils'
 VERSION = '0.0.2'
 AUTHOR = 'Alessandro Sebastianelli'
 AUTHOR_EMAIL = 'alessandro.sebastianelli1995@gmail.com'

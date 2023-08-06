@@ -31,3 +31,7 @@ after building the wheels, you can install the library bu running
 
 **be aware that version (0.0.1) can change**.
 
+
+## Upload to PyPi
+
+```python3 -m twine upload dist/* --verbose ```

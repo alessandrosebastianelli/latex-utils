@@ -1,7 +1,7 @@
 .eggs
 .pytest_cache
 __pycache__
-latexutils.egg-info
+pytexutils.egg-info
 build
 dist
 tmp

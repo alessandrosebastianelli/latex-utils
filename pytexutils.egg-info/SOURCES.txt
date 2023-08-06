@@ -1,0 +1,16 @@
+README.md
+setup.py
+pytexutils/__init__.py
+pytexutils.egg-info/PKG-INFO
+pytexutils.egg-info/SOURCES.txt
+pytexutils.egg-info/dependency_links.txt
+pytexutils.egg-info/requires.txt
+pytexutils.egg-info/top_level.txt
+pytexutils/figures/__init__.py
+pytexutils/figures/make_image.py
+pytexutils/figures/make_tabular_image.py
+pytexutils/tables/__init__.py
+pytexutils/tables/make_table.py
+tests/__init__.py
+tests/test_make_figure.py
+tests/test_make_table.py
