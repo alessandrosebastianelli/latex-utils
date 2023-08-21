@@ -1,4 +1,4 @@
-def make_image(image_full_path : str, caption : str = "image_caption", label : str = "image_label", preable : bool = False) -> str:
+def make_image(image_full_path : str, caption : str = "image_caption", label : str = "image_label", preamble : bool = False) -> str:
     '''
         Produces LaTeX code to display an image.  
 
@@ -10,7 +10,7 @@ def make_image(image_full_path : str, caption : str = "image_caption", label : s
             string for the caption of LaTeX table (default: "table_caption")  
         - label : str  
             string for the label of LaTeX table (default: "table_label")  
-        - preable : bool  
+        - preamble : bool  
             If True the function will return a full LaTeX document, if False the function will return only the table (default: False)  
 
         Returns:  
@@ -23,7 +23,7 @@ def make_image(image_full_path : str, caption : str = "image_caption", label : s
 
         ```python
     
-        latex_table = make_table('fig1.png', caption='My image 1', label='img1', preable=True)
+        latex_table = make_table('fig1.png', caption='My image 1', label='img1', preamble=True)
         ```
 
         Output:
@@ -46,7 +46,7 @@ def make_image(image_full_path : str, caption : str = "image_caption", label : s
 
     p = ""
     # LaTeX preamble
-    if preable:
+    if preamble:
         p += "\\documentclass[11pt]{article}\n"
         p += "\\usepackage{graphicx}\n"
         p += "\\begin{document}\n\n"
@@ -61,7 +61,7 @@ def make_image(image_full_path : str, caption : str = "image_caption", label : s
     p += "\t\\caption{"+str(caption)+"}\\label{fig:"+label+"}\n"
     p += "\\end{figure}\n"
 
-    if preable:
+    if preamble:
         # End document
         p += "\n\\end{document}\n"
 

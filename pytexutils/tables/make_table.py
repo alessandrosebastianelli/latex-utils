@@ -1,6 +1,6 @@
 import numpy as np
 
-def make_table(columns_name : list, data : np.ndarray, caption : str = "table_caption", label : str = "table_label", preable : bool = False) -> str:
+def make_table(columns_name : list, data : np.ndarray, caption : str = "table_caption", label : str = "table_label", preamble : bool = False) -> str:
     '''
         Produces LaTeX code to display a table.
 
@@ -14,7 +14,7 @@ def make_table(columns_name : list, data : np.ndarray, caption : str = "table_ca
             string for the caption of LaTeX table (default: "table_caption")  
         - label : str  
             string for the label of LaTeX table (default: "table_label")  
-        - preable : bool  
+        - preamble : bool  
             If True the function will return a full LaTeX document, if False the function will return only the table (default: False)  
 
         Returns:  
@@ -37,7 +37,7 @@ def make_table(columns_name : list, data : np.ndarray, caption : str = "table_ca
             ]  
         )  
 
-        latex_table = make_table(columns_name, data, caption='My table 1', label='tab1', preable=True)
+        latex_table = make_table(columns_name, data, caption='My table 1', label='tab1', preamble=True)
         ```
 
         Output:
@@ -79,7 +79,7 @@ def make_table(columns_name : list, data : np.ndarray, caption : str = "table_ca
     
     p = ""
     # LaTeX preamble
-    if preable:
+    if preamble:
         p += "\\documentclass[11pt]{article}\n"
         p += "\\usepackage{booktabs}\n"
         p += "\\usepackage{graphicx}\n\n"
@@ -114,7 +114,7 @@ def make_table(columns_name : list, data : np.ndarray, caption : str = "table_ca
     p += "\t\\end{tabular}}\n"
     p += "\\end{table}\n"
 
-    if preable:
+    if preamble:
         # End document
         p += "\n\\end{document}\n"
 
