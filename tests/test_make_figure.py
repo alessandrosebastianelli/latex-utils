@@ -9,7 +9,7 @@ import os
 if __name__ == '__main__':
 
 
-    latex_image = make_image('fig1.png', caption='My image 1', label='img1', preable=True)
+    latex_image = make_image('fig1.png', caption='My image 1', label='img1', preamble=True)
     print(latex_image)
 
 
@@ -17,7 +17,7 @@ if __name__ == '__main__':
             [["fig1.png", "fig2.png"],["fig1.png", "fig2.png"]]
         )
 
-    latex_images = make_tabular_image(images, caption='My image 1', label='img1', preable=True)
+    latex_images = make_tabular_image(images, caption='My image 1', label='img1', preamble=True)
     print(latex_images)
 
     save_folder = os.path.join('tmp', 'test_make_image')

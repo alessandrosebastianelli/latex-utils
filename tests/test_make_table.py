@@ -17,7 +17,7 @@ if __name__ == '__main__':
         ]
     )
 
-    latex_table = make_table(columns_name, data, caption='My table 1', label='tab1', preable=True)
+    latex_table = make_table(columns_name, data, caption='My table 1', label='tab1', preamble=True)
     print(latex_table)
 
     save_folder = os.path.join('tmp', 'test_make_table')
