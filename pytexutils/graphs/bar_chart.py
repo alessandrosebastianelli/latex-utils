@@ -183,5 +183,3 @@ def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", c
         p += "\n\\end{document}\n"
 
     return p
-
-
