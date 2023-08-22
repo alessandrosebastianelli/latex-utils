@@ -1,6 +1,6 @@
 import numpy as np
 
-def make_table(columns_name : list, data : np.ndarray, caption : str = "table_caption", label : str = "table_label", preamble : bool = False) -> str:
+def table(columns_name : list, data : np.ndarray, caption : str = "table_caption", label : str = "table_label", preamble : bool = False) -> str:
     '''
         Produces LaTeX code to display a table.
 
@@ -37,7 +37,7 @@ def make_table(columns_name : list, data : np.ndarray, caption : str = "table_ca
             ]  
         )  
 
-        latex_table = make_table(columns_name, data, caption='My table 1', label='tab1', preamble=True)
+        latex_table = table(columns_name, data, caption='My table 1', label='tab1', preamble=True)
         ```
 
         Output:

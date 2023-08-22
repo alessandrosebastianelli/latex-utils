@@ -1,4 +1,4 @@
-def make_image(image_full_path : str, caption : str = "image_caption", label : str = "image_label", preamble : bool = False) -> str:
+def image(image_full_path : str, caption : str = "image_caption", label : str = "image_label", preamble : bool = False) -> str:
     '''
         Produces LaTeX code to display an image.  
 
@@ -23,7 +23,7 @@ def make_image(image_full_path : str, caption : str = "image_caption", label : s
 
         ```python
     
-        latex_table = make_table('fig1.png', caption='My image 1', label='img1', preamble=True)
+        latex_table = image('fig1.png', caption='My image 1', label='img1', preamble=True)
         ```
 
         Output:

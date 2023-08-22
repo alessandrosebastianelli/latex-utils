@@ -2,4 +2,5 @@
     Init file for graphs
 '''
 
-from .make_pie_chart import *
+from .pie_chart import *
+from .bar_chart import *

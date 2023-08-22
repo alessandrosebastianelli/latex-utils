@@ -2,4 +2,4 @@
     pytexutils routines related to tables
 '''
 
-from .make_table import *
+from .table import *

@@ -1,7 +1,7 @@
-from ..tables.make_table import make_table
+from ..tables.table import table
 import numpy as np
 
-def make_tabular_image(images_full_path : np.ndarray, caption : str = "table_caption", label : str = "table_label", preamble : bool = False) -> str:
+def tabular_image(images_full_path : np.ndarray, caption : str = "table_caption", label : str = "table_label", preamble : bool = False) -> str:
     '''
         Produces LaTeX code to display a table of images.
 
@@ -32,7 +32,7 @@ def make_tabular_image(images_full_path : np.ndarray, caption : str = "table_cap
             [["fig1.png", "fig2.png"],["fig1.png", "fig2.png"]]  
         )  
     
-        latex_table = make_tabular_image(images, caption='My image 1', label='img1', preamble=True)  
+        latex_table = tabular_image(images, caption='My image 1', label='img1', preamble=True)  
         ```
 
         Output:
@@ -68,6 +68,6 @@ def make_tabular_image(images_full_path : np.ndarray, caption : str = "table_cap
         for j in range(images_full_path.shape[1]):
             images_full_path[i,j] = "\\includegraphics[width=\\columnwidth]{"+str(images_full_path[i,j])+"}"
 
-    p = make_table(None, images_full_path, caption=caption, label=label, preamble=preamble)
+    p = table(None, images_full_path, caption=caption, label=label, preamble=preamble)
 
     return p

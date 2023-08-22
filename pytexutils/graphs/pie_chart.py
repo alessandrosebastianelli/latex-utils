@@ -1,4 +1,4 @@
-def make_pie_chart(data : dict, caption : str = "image_caption", label : str = "image_label", preamble : bool = False, ctype : str = 'classic') -> str:
+def pie_chart(data : dict, caption : str = "image_caption", label : str = "image_label", preamble : bool = False, ctype : str = 'classic') -> str:
     '''
         Produces LaTeX code to display a pie chart.  
 
@@ -12,9 +12,9 @@ def make_pie_chart(data : dict, caption : str = "image_caption", label : str = "
                 data = {'coffee':38, 'tea':36, 'croissant':11, 'patries':10, 'juice':5s}
             ```
         - caption : str  
-            string for the caption of LaTeX table (default: "table_caption")  
+            string for the caption of LaTeX graph (default: "image_caption")  
         - label : str  
-            string for the label of LaTeX table (default: "table_label")  
+            string for the label of LaTeX graph (default: "image_label")  
         - preamble : bool  
             If True the function will return a full LaTeX document, if False the function will return only the table (default: False)  
         - ctype : str  
@@ -30,7 +30,7 @@ def make_pie_chart(data : dict, caption : str = "image_caption", label : str = "
 
         ```python
         data = {'coffee':38, 'tea':36, 'croissant':11, 'pastries':10, 'juice':5}
-        latex_pie_chart = make_pie_chart(data, caption='My pie chart 1', label='pie1', preamble=True, ctype="classic")
+        latex_pie_chart = make_chart(data, caption='My pie chart 1', label='pie1', preamble=True, ctype="classic")
         ```
 
         Output:
@@ -87,5 +87,4 @@ def make_pie_chart(data : dict, caption : str = "image_caption", label : str = "
         # End document
         p += "\n\\end{document}\n"
 
-    return p
     return p

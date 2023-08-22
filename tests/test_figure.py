@@ -1,15 +1,15 @@
 import sys
 sys.path += ['.']
 
-from pytexutils.figures.make_image import make_image
-from pytexutils.figures.make_tabular_image import make_tabular_image
+from pytexutils.figures.image import image
+from pytexutils.figures.tabular_image import tabular_image
 import numpy as np
 import os
 
 if __name__ == '__main__':
 
 
-    latex_image = make_image('fig1.png', caption='My image 1', label='img1', preamble=True)
+    latex_image = image('fig1.png', caption='My image 1', label='img1', preamble=True)
     print(latex_image)
 
 
@@ -17,7 +17,7 @@ if __name__ == '__main__':
             [["fig1.png", "fig2.png"],["fig1.png", "fig2.png"]]
         )
 
-    latex_images = make_tabular_image(images, caption='My image 1', label='img1', preamble=True)
+    latex_images = tabular_image(images, caption='My image 1', label='img1', preamble=True)
     print(latex_images)
 
     save_folder = os.path.join('tmp', 'test_make_image')
