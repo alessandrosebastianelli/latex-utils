@@ -1,4 +1,4 @@
-def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", caption : str = "image_caption", label : str = "image_label", preamble : bool = False) -> str:
+def line_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", caption : str = "image_caption", label : str = "image_label", preamble : bool = False) -> str:
     '''
         Produces LaTeX code to display a bar plot.  
 
@@ -9,19 +9,22 @@ def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", c
                 - 1) x axis value
                 - 2) y axis value 
                 - 3) label
-                - 4) color in rgb format e.g.
+                - 4) marker type
+                - 5) color in rgb format e.g.
 
             ```python 
                 data = {
                     'men' : {
                         'x'     : [2012,   2011,   2010,   2009]
                         'y'     : [408184, 408348, 414870, 412156]
-                        'color' : [0.54, 0, 0]
+                        'color' : [0.54, 0, 0],
+                        'marker': 'square',
                     },
                     'women' : {
                         'x'     : [2012,   2011,   2010,   2009]
                         'y'     : [388950, 393007, 398449, 395972]
-                        'color' : [0, 0.50, 0.50]
+                        'color' : [0, 0.50, 0.50],
+                        'marker': 'diamonds',
                     }
                 }
             ```
@@ -43,18 +46,20 @@ def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", c
 
         ```python
         data = {
-        'men' : {
-                'x'     : [2012,   2011,   2010,   2009],
-                'y'     : [408184, 408348, 414870, 412156],
-                'color' : [0.54, 0, 0],
-            },
-        'women' : {
-                'x'     : [2012,   2011,   2010,   2009],
-                'y'     : [388950, 393007, 398449, 395972],
-                'color' : [0, 0.50, 0.50],
+                'men' : {
+                    'x'     : [2012,   2011,   2010,   2009]
+                    'y'     : [408184, 408348, 414870, 412156]
+                    'color' : [0.54, 0, 0],
+                    'marker': 'square',
+                },
+                'women' : {
+                    'x'     : [2012,   2011,   2010,   2009]
+                    'y'     : [388950, 393007, 398449, 395972]
+                    'color' : [0, 0.50, 0.50],
+                    'marker': 'diamonds',
+                }
             }
-        }
-        latex_bar_plot = bar_chart(data, caption='My pie chart 1', label='pie1', preamble=True)
+        latex_line_chart = line_chart(data, caption='My line chart 1', label='line1', preamble=True)
         ```
 
         Output:
@@ -81,30 +86,28 @@ def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", c
 
         \\begin{figure}[!ht]
                 \\centering
-                \\resizebox{\\columnwidth}{!}{    
+                \\resizebox{\\columnwidth}{!}{
                 \\begin{tikzpicture}
                 \\begin{axis}[
                 ylabel=ylabel,
                 xlabel=xlabel,
                 xtick=data,
-                xticklabels={2012,2011,2010,2009},
-                legend style={at={(0.5,-0.2)}, anchor=north,legend columns=-1},
-                ybar interval=0.7,
+                legend pos=north west,
                 width=10cm,
                 height=7cm,
                 ]
 
-                \\addplot[style = {fill=color1}] table [y index=1] {\\datatable};
-                \\addplot[style = {fill=color2}] table [y index=2] {\\datatable};
+                \\addplot[color = color1, mark=square] table [y index=1] {\\datatable};
+                \\addplot[color = color2, mark=diamonds] table [y index=2] {\\datatable};
 
                 \\legend{men,women}
 
                 \\end{axis}
                 \\end{tikzpicture}}
-                \\caption{My bar chart 1}\\label{fig:bar1}
+                \\caption{My line chart 1}\\label{fig:line1}
         \\end{figure}
 
-        \\end{document}
+        \end{document}
         ```
     '''
 
@@ -118,7 +121,6 @@ def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", c
         p += "\\begin{document}\n\n"
 
     # Define colors
-
     for i, col in enumerate(data):
         rgb = data[col]['color']
         p += "\\definecolor{color"+str(i+1)+"}{rgb}{"+str(rgb[0])+","+str(rgb[1])+","+str(rgb[2])+"}\n"
@@ -141,7 +143,7 @@ def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", c
     p += "}\\datatable\n\n"
                  
 
-    # Bar Chart
+    # Line Chart
     p += "\\begin{figure}[!ht]\n"
     p += "\t\\centering\n"
     p += "\t\\resizebox{\columnwidth}{!}{\n"
@@ -151,20 +153,12 @@ def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", c
     p += "\t  ylabel="+str(y_label)+",\n"
     p += "\t  xlabel="+str(x_label)+",\n"
     p += "\t  xtick=data,\n"
-    p += "\t  xticklabels={"
-
-    for x in data[col]['x']:
-        p += f"{x},"
-    
-    p = p[:-1]
-    p += "},\n"
-    p += "\t  legend style={at={(0.5,-0.2)}, anchor=north,legend columns=-1},\n"
-    p += "\t  ybar interval=0.7,\n"
+    p += "\t  legend pos=north west,\n"
     p += "\t  width=10cm,\n"
     p += "\t  height=7cm,\n\t]\n\n"
     
-    for i,_ in enumerate(data):
-        p += "\t\\addplot[style = {fill=color"+str(i+1)+"}] table [y index="+str(i+1)+"] {\\datatable};\n"
+    for i, col in enumerate(data):
+        p += "\t\\addplot[color = color"+str(i+1)+", mark="+ data[col]['marker']+"] table [y index="+str(i+1)+"] {\\datatable};\n"
 
     p += "\n"
     p += "\t\\legend{"
