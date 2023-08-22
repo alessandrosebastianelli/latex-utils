@@ -147,8 +147,8 @@
 </span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">                xticklabels={2012,2011,2010,2009},</span>
 </span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">                legend style={at={(0.5,-0.2)}, anchor=north,legend columns=-1},</span>
 </span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">                ybar interval=0.7,</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">                width=20cm,</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">                height=10cm,</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">                width=10cm,</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">                height=7cm,</span>
 </span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">                ]</span>
 </span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>
 </span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">                \\addplot[style = {fill=color1}] table [y index=1] {\\datatable};</span>
@@ -217,8 +217,8 @@
 </span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;},</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">  legend style={at={(0.5,-0.2)}, anchor=north,legend columns=-1},</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">  ybar interval=0.7,</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">  width=20cm,</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">  height=10cm,</span><span class="se">\n\t</span><span class="s2">]</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">  width=10cm,</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">  height=7cm,</span><span class="se">\n\t</span><span class="s2">]</span><span class="se">\n\n</span><span class="s2">&quot;</span>
 </span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    
 </span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
 </span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t\\</span><span class="s2">addplot[style = {fill=color&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;}] table [y index=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;] {</span><span class="se">\\</span><span class="s2">datatable};</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -347,8 +347,8 @@
 </span><span id="bar_chart-91"><a href="#bar_chart-91"><span class="linenos"> 91</span></a><span class="sd">                xticklabels={2012,2011,2010,2009},</span>
 </span><span id="bar_chart-92"><a href="#bar_chart-92"><span class="linenos"> 92</span></a><span class="sd">                legend style={at={(0.5,-0.2)}, anchor=north,legend columns=-1},</span>
 </span><span id="bar_chart-93"><a href="#bar_chart-93"><span class="linenos"> 93</span></a><span class="sd">                ybar interval=0.7,</span>
-</span><span id="bar_chart-94"><a href="#bar_chart-94"><span class="linenos"> 94</span></a><span class="sd">                width=20cm,</span>
-</span><span id="bar_chart-95"><a href="#bar_chart-95"><span class="linenos"> 95</span></a><span class="sd">                height=10cm,</span>
+</span><span id="bar_chart-94"><a href="#bar_chart-94"><span class="linenos"> 94</span></a><span class="sd">                width=10cm,</span>
+</span><span id="bar_chart-95"><a href="#bar_chart-95"><span class="linenos"> 95</span></a><span class="sd">                height=7cm,</span>
 </span><span id="bar_chart-96"><a href="#bar_chart-96"><span class="linenos"> 96</span></a><span class="sd">                ]</span>
 </span><span id="bar_chart-97"><a href="#bar_chart-97"><span class="linenos"> 97</span></a>
 </span><span id="bar_chart-98"><a href="#bar_chart-98"><span class="linenos"> 98</span></a><span class="sd">                \\addplot[style = {fill=color1}] table [y index=1] {\\datatable};</span>
@@ -417,8 +417,8 @@
 </span><span id="bar_chart-161"><a href="#bar_chart-161"><span class="linenos">161</span></a>    <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;},</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span id="bar_chart-162"><a href="#bar_chart-162"><span class="linenos">162</span></a>    <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">  legend style={at={(0.5,-0.2)}, anchor=north,legend columns=-1},</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span id="bar_chart-163"><a href="#bar_chart-163"><span class="linenos">163</span></a>    <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">  ybar interval=0.7,</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span id="bar_chart-164"><a href="#bar_chart-164"><span class="linenos">164</span></a>    <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">  width=20cm,</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span id="bar_chart-165"><a href="#bar_chart-165"><span class="linenos">165</span></a>    <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">  height=10cm,</span><span class="se">\n\t</span><span class="s2">]</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+</span><span id="bar_chart-164"><a href="#bar_chart-164"><span class="linenos">164</span></a>    <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">  width=10cm,</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span id="bar_chart-165"><a href="#bar_chart-165"><span class="linenos">165</span></a>    <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">  height=7cm,</span><span class="se">\n\t</span><span class="s2">]</span><span class="se">\n\n</span><span class="s2">&quot;</span>
 </span><span id="bar_chart-166"><a href="#bar_chart-166"><span class="linenos">166</span></a>    
 </span><span id="bar_chart-167"><a href="#bar_chart-167"><span class="linenos">167</span></a>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
 </span><span id="bar_chart-168"><a href="#bar_chart-168"><span class="linenos">168</span></a>        <span class="n">p</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t\\</span><span class="s2">addplot[style = {fill=color&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;}] table [y index=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;] {</span><span class="se">\\</span><span class="s2">datatable};</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -536,8 +536,8 @@ LaTeX code to display a pie chart  </li>
         xticklabels=<span class="nb">{</span>2012,2011,2010,2009<span class="nb">}</span>,
         legend style=<span class="nb">{</span>at=<span class="nb">{</span>(0.5,-0.2)<span class="nb">}</span>, anchor=north,legend columns=-1<span class="nb">}</span>,
         ybar interval=0.7,
-        width=20cm,
-        height=10cm,
+        width=10cm,
+        height=7cm,
         ]
 
         <span class="k">\addplot</span><span class="na">[style = {fill=color1}]</span> table [y index=1] <span class="nb">{</span><span class="k">\datatable</span><span class="nb">}</span>;
