@@ -63,6 +63,7 @@ def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", c
         ```latex
         \\documentclass[11pt]{article}
         \\usepackage{pgfplotstable}
+        \\pgfplotsset{compat=1.17}
         \\usepackage{pgf-pie}
         \\usepackage{graphicx}
         \\usepackage{xcolor}
@@ -115,6 +116,7 @@ def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", c
         p += "\\usepackage{pgf-pie}\n"
         p += "\\usepackage{graphicx}\n"
         p += "\\usepackage{xcolor}\n"
+        p += "\\pgfplotsset{compat=1.17}\n"
         p += "\\begin{document}\n\n"
 
     # Define colors

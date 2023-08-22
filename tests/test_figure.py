@@ -20,7 +20,7 @@ if __name__ == '__main__':
     latex_images = tabular_image(images, caption='My image 1', label='img1', preamble=True)
     print(latex_images)
 
-    save_folder = os.path.join('tmp', 'test_make_image')
+    save_folder = os.path.join('tmp', 'test_image')
     os.makedirs(save_folder, exist_ok=True)
     
     with open(os.path.join(save_folder, 'main-1.tex'), 'w') as texfile:

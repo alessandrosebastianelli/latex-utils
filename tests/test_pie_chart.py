@@ -13,7 +13,7 @@ if __name__ == '__main__':
 
     print(latex_pie_chart)
 
-    save_folder = os.path.join('tmp', 'test_make_chart')
+    save_folder = os.path.join('tmp', 'test_pie_chart')
     os.makedirs(save_folder, exist_ok=True)
     
     with open(os.path.join(save_folder, 'main-1.tex'), 'w') as texfile:
@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
     print(latex_pie_chart)
 
-    save_folder = os.path.join('tmp', 'test_make_chart')
+    save_folder = os.path.join('tmp', 'test_pie_chart')
     os.makedirs(save_folder, exist_ok=True)
     
     with open(os.path.join(save_folder, 'main-2.tex'), 'w') as texfile:

@@ -71,6 +71,7 @@ def line_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", 
         \\usepackage{pgf-pie}
         \\usepackage{graphicx}
         \\usepackage{xcolor}
+        \\pgfplotsset{compat=1.17}
         \\begin{document}
 
         \\definecolor{color1}{rgb}{0.54,0,0}
@@ -118,6 +119,7 @@ def line_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", 
         p += "\\usepackage{pgf-pie}\n"
         p += "\\usepackage{graphicx}\n"
         p += "\\usepackage{xcolor}\n"
+        p += "\\pgfplotsset{compat=1.17}\n"
         p += "\\begin{document}\n\n"
 
     # Define colors
