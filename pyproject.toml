@@ -3,7 +3,7 @@ requires = ["numpy"]
 
 [project]
 name = "pytexutils"
-version = "0.1.5"
+version = "0.1.7"
 authors = [
   { name="Alessandro Sebastianelli", email="alessandro.sebastianelli1995@gmail.com" },
 ]
