@@ -17,7 +17,7 @@ if __name__ == '__main__':
         ]
     )
 
-    latex_table = table(columns_name, data, caption='My table 1', label='tab1', preamble=True)
+    latex_table = table(columns_name, data, bold_axis=1, caption='My table 1', label='tab1', preamble=True)
     print(latex_table)
 
     save_folder = os.path.join('tmp', 'test_table')

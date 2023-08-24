@@ -1,6 +1,6 @@
 import numpy as np
 
-def table(columns_name : list, data : np.ndarray, round_val : int = 4, caption : str = "table_caption", label : str = "table_label", preamble : bool = False) -> str:
+def table(columns_name : list, data : np.ndarray, round_val : int = 4, bold_axis : int = None, caption : str = "table_caption", label : str = "table_label", preamble : bool = False) -> str:
     '''
         Produces LaTeX code to display a table.
 
@@ -12,6 +12,9 @@ def table(columns_name : list, data : np.ndarray, round_val : int = 4, caption :
             2D ndarray containing data used to fill the table
         - round_val : int
             integer representing the decimal rounding
+        - bold_axis : int
+            integer representing the axis to wich get the max value and to set bold, if None no bold text will be added
+            if 0 the maximum will be calculated column-wise, if 1 the maximum will be calculated row-wise
         - caption : str  
             string for the caption of LaTeX table (default: "table_caption")  
         - label : str  
@@ -81,6 +84,10 @@ def table(columns_name : list, data : np.ndarray, round_val : int = 4, caption :
         
     if round_val < 1:
         round_val = 1
+
+    if bold_axis is not None:
+        if bold_axis < 0 or bold_axis > 1:
+            bold_axis = None
     
     p = ""
     # LaTeX preamble
@@ -107,6 +114,12 @@ def table(columns_name : list, data : np.ndarray, round_val : int = 4, caption :
         p += l + "\\\\\n"
         p += "\t\t\\midrule\n"
 
+    if bold_axis is not None:
+        max_pos = np.argmax(data, axis=bold_axis)
+
+    print(max_pos)
+    print(data.shape)
+
     # Data
     for i in range(data.shape[0]):
         l = "\t\t"
@@ -114,7 +127,20 @@ def table(columns_name : list, data : np.ndarray, round_val : int = 4, caption :
 
             d = data[i,j]
             if type(d) is float: d = round(d, round_val)
-            l+= "{:<5s}{}{:<5s}{}".format("", str(d), "", "&")
+            
+            if bold_axis is None:
+                l+= "{:<1s}{}{:<1s}{}".format("", str(d), "", "&")
+            elif bold_axis == 0:
+                if max_pos[j] == i:
+                    l+= "{:<1s}{}{:<1s}{}".format("", "\\bf{"+str(d)+"}", "", "&")
+                else:
+                    l+= "{:<1s}{}{:<1s}{}".format("", str(d), "", "&")
+            elif bold_axis == 1:
+                if max_pos[i] == j:
+                    l+= "{:<1s}{}{:<1s}{}".format("", "\\bf{"+str(d)+"}", "", "&")
+                else:
+                    l+= "{:<1s}{}{:<1s}{}".format("", str(d), "", "&")
+
         l = l[:-1]
 
         p += l + "\\\\\n"
