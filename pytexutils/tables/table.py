@@ -109,7 +109,7 @@ def table(columns_name : list, data : np.ndarray, round_val : int = 4, bold_axis
         # Columns name
         l = "\t\t"
         for i in range(len(columns_name)):
-            l+= "{:<5s}{}{:<5s}{}".format("", str(columns_name[i]), "", "&")
+            l+= "{:<5s}{}{:<5s}{}".format("", str(columns_name[i].strip()), "", "&")
         l = l[:-1]
         p += l + "\\\\\n"
         p += "\t\t\\midrule\n"
@@ -118,7 +118,6 @@ def table(columns_name : list, data : np.ndarray, round_val : int = 4, bold_axis
         min_pos = np.argmin(data.astype(str), axis=bold_axis)
         max_pos = np.argmax(data.astype(str), axis=bold_axis)
 
-
     # Data
     for i in range(data.shape[0]):
         l = "\t\t"
@@ -126,23 +125,24 @@ def table(columns_name : list, data : np.ndarray, round_val : int = 4, bold_axis
 
             d = data[i,j]
             if type(d) is float: d = round(d, round_val)
+            d = str(d).strip()
             
             if bold_axis is None:
-                l+= "{:<1s}{}{:<1s}{}".format("", str(d), "", "&")
+                l+= "{:<1s}{}{:<1s}{}".format("", d, "", "&")
             elif bold_axis == 0:
                 if min_pos[j] == i:
-                    l+= "{:<1s}{}{:<1s}{}".format("", "\\bf{"+str(d)+"}", "", "&")
+                    l+= "{:<1s}{}{:<1s}{}".format("", "\\bf{"+d+"}", "", "&")
                 elif max_pos[j] == i:
-                    l+= "{:<1s}{}{:<1s}{}".format("", "\\texit{"+str(d)+"}", "", "&")
+                    l+= "{:<1s}{}{:<1s}{}".format("", "\\texit{"+d+"}", "", "&")
                 else:
-                    l+= "{:<1s}{}{:<1s}{}".format("", str(d), "", "&")
+                    l+= "{:<1s}{}{:<1s}{}".format("", d, "", "&")
             elif bold_axis == 1:
                 if min_pos[i] == j:
-                    l+= "{:<1s}{}{:<1s}{}".format("", "\\bf{"+str(d)+"}", "", "&")
+                    l+= "{:<1s}{}{:<1s}{}".format("", "\\bf{"+d+"}", "", "&")
                 elif max_pos[i] == j:
-                    l+= "{:<1s}{}{:<1s}{}".format("", "\\textit{"+str(d)+"}", "", "&")
+                    l+= "{:<1s}{}{:<1s}{}".format("", "\\textit{"+d+"}", "", "&")
                 else:
-                    l+= "{:<1s}{}{:<1s}{}".format("", str(d), "", "&")
+                    l+= "{:<1s}{}{:<1s}{}".format("", d, "", "&")
 
         l = l[:-1]
 
