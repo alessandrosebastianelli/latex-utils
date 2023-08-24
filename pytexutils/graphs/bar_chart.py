@@ -1,3 +1,5 @@
+import numpy as np
+
 def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", caption : str = "image_caption", label : str = "image_label", preamble : bool = False) -> str:
     '''
         Produces LaTeX code to display a bar plot.  
@@ -172,8 +174,12 @@ def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", c
     p += "},\n"
     p += "\t  legend style={at={(0.5,-0.2)}, anchor=north,legend columns=-1},\n"
     p += "\t  ybar interval=0.7,\n"
-    p += "\t  width="+str(int(3*len(data[col]['x'])))+"cm,\n"
-    p += "\t  height="+str(int(3*len(data[col]['x'])/1.4))+"cm,\n\t]\n\n"
+
+    width  = 6 + int(2 * np.sqrt(3*len(data[col]['x'])))
+    height = 3 + int(width*0.2)
+
+    p += "\t  width="+str(width)+"cm,\n"
+    p += "\t  height="+str(height)+"cm,\n\t]\n\n"
     
     for i,_ in enumerate(data):
         p += "\t\\addplot[style = {fill=color"+str(i+1)+"}] table [y index="+str(i+1)+"] {\\datatable};\n"
