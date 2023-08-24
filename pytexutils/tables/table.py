@@ -115,8 +115,8 @@ def table(columns_name : list, data : np.ndarray, round_val : int = 4, bold_axis
         p += "\t\t\\midrule\n"
 
     if bold_axis is not None:
-        min_pos = np.argmin(data, axis=bold_axis)
-        max_pos = np.argmax(data, axis=bold_axis)
+        min_pos = np.argmin(data.astype(str), axis=bold_axis)
+        max_pos = np.argmax(data.astype(str), axis=bold_axis)
 
 
     # Data
