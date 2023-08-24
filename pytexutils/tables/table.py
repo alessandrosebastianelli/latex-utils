@@ -115,10 +115,9 @@ def table(columns_name : list, data : np.ndarray, round_val : int = 4, bold_axis
         p += "\t\t\\midrule\n"
 
     if bold_axis is not None:
+        min_pos = np.argmin(data, axis=bold_axis)
         max_pos = np.argmax(data, axis=bold_axis)
 
-    print(max_pos)
-    print(data.shape)
 
     # Data
     for i in range(data.shape[0]):
@@ -131,13 +130,17 @@ def table(columns_name : list, data : np.ndarray, round_val : int = 4, bold_axis
             if bold_axis is None:
                 l+= "{:<1s}{}{:<1s}{}".format("", str(d), "", "&")
             elif bold_axis == 0:
-                if max_pos[j] == i:
+                if min_pos[j] == i:
                     l+= "{:<1s}{}{:<1s}{}".format("", "\\bf{"+str(d)+"}", "", "&")
+                elif max_pos[j] == i:
+                    l+= "{:<1s}{}{:<1s}{}".format("", "\\texit{"+str(d)+"}", "", "&")
                 else:
                     l+= "{:<1s}{}{:<1s}{}".format("", str(d), "", "&")
             elif bold_axis == 1:
-                if max_pos[i] == j:
+                if min_pos[i] == j:
                     l+= "{:<1s}{}{:<1s}{}".format("", "\\bf{"+str(d)+"}", "", "&")
+                elif max_pos[i] == j:
+                    l+= "{:<1s}{}{:<1s}{}".format("", "\\textit{"+str(d)+"}", "", "&")
                 else:
                     l+= "{:<1s}{}{:<1s}{}".format("", str(d), "", "&")
 
