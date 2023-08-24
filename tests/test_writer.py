@@ -23,4 +23,4 @@ if __name__ == '__main__':
     print(latex_bar_chart)
 
     write_to_file(latex_bar_chart, 'tmp/test_bar_chart')
-    write_to_file(latex_bar_chart, None)
+    #write_to_file(latex_bar_chart, None)
