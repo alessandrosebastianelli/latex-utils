@@ -90,6 +90,7 @@ def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", c
                 xtick=data,
                 xticklabels={2012,2011,2010,2009},
                 legend style={at={(0.5,-0.2)}, anchor=north,legend columns=-1},
+                enlarge x limits=0.0005,
                 ybar interval=0.7,
                 width=10cm,
                 height=7cm,
@@ -139,6 +140,14 @@ def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", c
             y = data[col]['y'][i]
             p += f"{y}\t"
         p += "\n\t"
+    
+    p += f"{i+1}\t"
+    for col in data:
+        y = data[col]['y'][i]
+        p += f"{y}\t"
+    p += "\n\t"
+
+
     p = p[:-1]
     p += "}\\datatable\n\n"
                  
@@ -153,6 +162,7 @@ def bar_chart(data : dict, x_label : str = "xlabel", y_label : str = "ylabel", c
     p += "\t  ylabel="+str(y_label)+",\n"
     p += "\t  xlabel="+str(x_label)+",\n"
     p += "\t  xtick=data,\n"
+    p += "\t enlarge x limits=0.0005,\n"
     p += "\t  xticklabels={"
 
     for x in data[col]['x']:
