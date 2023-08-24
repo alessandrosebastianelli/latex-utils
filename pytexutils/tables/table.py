@@ -111,7 +111,10 @@ def table(columns_name : list, data : np.ndarray, round_val : int = 4, caption :
     for i in range(data.shape[0]):
         l = "\t\t"
         for j in range(data.shape[1]):
-            l+= "{:<5s}{}{:<5s}{}".format("", str(round(data[i,j], round_val)), "", "&")
+
+            d = data[i,j]
+            if type(d) is float or type(d): d = round(d, round_val)
+            l+= "{:<5s}{}{:<5s}{}".format("", str(d), "", "&")
         l = l[:-1]
 
         p += l + "\\\\\n"
