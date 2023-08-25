@@ -10,17 +10,17 @@ if __name__ == '__main__':
     columns_name = ['A', 'B', 'C']
     data         = np.array(
         [
-            [0.1, 0.2, 0.3],
-            [0.4, 0.5, 0.6],
-            [0.7, 0.8, 0.9],
-            [1.1, 1.2, 1.3]
+            ['a', 0.2, 0.3],
+            ['b', 0.5, 0.6],
+            ['c', 0.8, 0.9],
+            ['d', 1.2, 1.3]
         ]
     )
 
     print(type(data[0,0]))
     print(type(data[0,1]))
 
-    latex_table = table(columns_name, data, bold_axis=1, caption='My table 1', label='tab1', preamble=True)
+    latex_table = table(columns_name, data, bold_axis=0, caption='My table 1', label='tab1', preamble=True)
     print(latex_table)
 
     save_folder = os.path.join('tmp', 'test_table')

@@ -109,14 +109,32 @@ def table(columns_name : list, data : np.ndarray, round_val : int = 4, bold_axis
         # Columns name
         l = "\t\t"
         for i in range(len(columns_name)):
-            l+= "{:<5s}{}{:<5s}{}".format("", str(columns_name[i].strip()), "", "&")
+            l+= "{:<1s}{}{:<1s}{}".format("", str(columns_name[i].strip()), "", "&")
         l = l[:-1]
         p += l + "\\\\\n"
         p += "\t\t\\midrule\n"
 
     if bold_axis is not None:
-        min_pos = np.argmin(data.astype(str), axis=bold_axis)
-        max_pos = np.argmax(data.astype(str), axis=bold_axis)
+
+        new_data_min = []
+        new_data_max = []
+        for x in range(data.shape[0]):
+            dmin = []
+            dmax = []
+            for y in range(data.shape[1]):
+                try:
+                    dmin.append(float(data[x,y]))
+                    dmax.append(float(data[x,y]))
+                except Exception:
+                    dmin.append(+1e100)
+                    dmax.append(-1e100)
+            new_data_min.append(dmin)
+            new_data_max.append(dmax)
+        
+        new_data_min = np.array(new_data_min).astype(float)
+        new_data_max = np.array(new_data_max).astype(float)
+        min_pos = np.nanargmin(new_data_min, axis=bold_axis)
+        max_pos = np.nanargmax(new_data_max, axis=bold_axis)
 
     # Data
     for i in range(data.shape[0]):
@@ -131,14 +149,14 @@ def table(columns_name : list, data : np.ndarray, round_val : int = 4, bold_axis
                 l+= "{:<1s}{}{:<1s}{}".format("", d, "", "&")
             elif bold_axis == 0:
                 if min_pos[j] == i:
-                    l+= "{:<1s}{}{:<1s}{}".format("", "\\bf{"+d+"}", "", "&")
+                    l+= "{:<1s}{}{:<1s}{}".format("", "\\bfseries{"+d+"}", "", "&")
                 elif max_pos[j] == i:
-                    l+= "{:<1s}{}{:<1s}{}".format("", "\\texit{"+d+"}", "", "&")
+                    l+= "{:<1s}{}{:<1s}{}".format("", "\\textit{"+d+"}", "", "&")
                 else:
                     l+= "{:<1s}{}{:<1s}{}".format("", d, "", "&")
             elif bold_axis == 1:
                 if min_pos[i] == j:
-                    l+= "{:<1s}{}{:<1s}{}".format("", "\\bf{"+d+"}", "", "&")
+                    l+= "{:<1s}{}{:<1s}{}".format("", "\\bfseries{"+d+"}", "", "&")
                 elif max_pos[i] == j:
                     l+= "{:<1s}{}{:<1s}{}".format("", "\\textit{"+d+"}", "", "&")
                 else:
