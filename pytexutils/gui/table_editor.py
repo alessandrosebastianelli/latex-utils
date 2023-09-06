@@ -77,13 +77,12 @@ def table_editor():
         global latex_table
         latex_table = table(columns_name=columns, data=data[1:,:])
     
-    
-    rows = simpledialog.askinteger(title='Number of Rows',    prompt='Number of Rows:',)#   parent=window)
-    cols = simpledialog.askinteger(title='Number of Columns', prompt='Number of Columns:' )#, parent=window)
-
     window = tk.Tk()
     window.title('Table Editor')
     window.attributes("-zoomed", True)
+
+    rows = simpledialog.askinteger(title='Number of Rows',    prompt='Number of Rows:', parent=window)
+    cols = simpledialog.askinteger(title='Number of Columns', prompt='Number of Columns:', parent=window)
 
     entries = []
     for i in range(rows):
